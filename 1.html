@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p id="text1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, nobis nihil fugiat reiciendis. Quaerat vero iusto illum placeat nesciunt vitae, libero itaque, minima, qui consequuntur illo facere nihil distinctio obcaecati!</p>
+	<img src="blur/1.jpg" data-src="1.jpg" alt="" class="blur">
+	<p id="text2">Dolorum, vitae totam. Ipsa rerum quo, aliquid possimus eum vel voluptates! Optio at architecto repudiandae voluptatibus sequi, sit sed eaque obcaecati debitis incidunt totam et temporibus, aliquid dolores impedit hic?</p>
+	<img src="blur/2.jpg" data-src="2.jpg" alt="" class="blur">
+	<p id="text3">Beatae odio perspiciatis ex nisi tenetur, inventore reiciendis molestias consequuntur ipsum facilis animi blanditiis ipsa nam vero! Labore placeat obcaecati nisi, ducimus ratione, aliquam maxime excepturi error, doloremque quibusdam, mollitia?</p>
+	<img src="blur/3.jpg" data-src="3.jpg" alt="" class="blur">
+	<p id="text4">Numquam voluptas beatae praesentium veniam voluptates, reprehenderit officiis pariatur odit, itaque, tempore quod nulla ipsum consequuntur saepe asperiores, sint illum velit fuga inventore necessitatibus consectetur magni a! Nihil, molestias, qui!</p>
+	<img src="blur/4.jpg" data-src="4.jpg" alt="" class="blur">
+	<p id="text5">Totam harum perspiciatis alias! Velit earum aperiam illo aliquam quibusdam, possimus facilis voluptate asperiores amet quasi nostrum reiciendis, animi recusandae quae aspernatur dolores vero est fugit voluptatum magnam repellat, sapiente!</p>
+	<img src="blur/5.jpg" data-src="5.jpg" alt="" class="blur">
+	<p id="text6">Quo atque velit vitae et quis optio, repellat ut culpa mollitia modi delectus assumenda officia sed aliquam eaque iure molestias nihil laboriosam ex ea dolorum autem id libero nostrum alias!</p>
+	<img src="blur/6.jpg" data-src="6.jpg" alt="" class="blur">
+	<p id="text7">Labore, hic inventore rerum quasi magni sapiente? Inventore labore ratione ipsam maxime adipisci dicta minima doloremque obcaecati fugit nemo, earum quia accusantium voluptate temporibus voluptates officia provident explicabo consequatur exercitationem.</p>
+	<img src="blur/7.jpg" data-src="7.jpg" alt="" class="blur">
+</body>
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+		alert('Содержимое загружено.')
+		// let box = document.getElementById('box');
+		let counter = 0;
+
+		document.addEventListener('scroll', function() {
+			counter++;
+			console.log('Прокрутка. ${counter}');
+		}, false);
+		document.addEventListener('scroll', lazyLoad, false);
+
+	});
+
+	function lazyLoad() {
+		let lazyList = document.querySelectorAll('.blur')
+		for (let lazy of lazyList) {
+			alert(lazy.hasAttribute('data-src'))
+			if(lazy.hasAttribute('data-src')){
+				console.log(lazy, '-------')
+				let data = lazy.getAttribute('data-src');
+				console.log(data);
+				lazy.setAttribute('src', data);
+				//alert(lazy.get.Attribute('src'))
+				lazy.src = data;
+				alert(lazy.getAttribute('src'))
+			}
+			// lazy.removeAttribute('data-src');
+			// lazy.classList.remowe('blur');
+			document.removeEventListener('scroll', lazyLoad);
+		}
+	}
+</script>
+</html>
